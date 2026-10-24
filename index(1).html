@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINIMALIST | Marketing &amp; Conteúdo</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&amp;family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f5ef;
+      --warm-white: #fffdf8;
+      --stone: #e7e3d8;
+      --olive: #364235;
+      --ink: #1d1d1a;
+      --graphite: #4d4d47;
+      --line: rgba(29,29,26,.18);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "DM Sans", sans-serif; color: var(--ink); touch-action: pan-y; overflow-x: hidden; }
+    section { scroll-margin-top: 92px; }
+    .serif { font-family: "Libre Baskerville", serif; }
+    .site-shell { width: 100%; overflow-x: hidden; touch-action: pan-y; }
+    main, header, footer { touch-action: pan-y; }
+    [aria-hidden="true"], .placeholder::before, .placeholder::after { pointer-events: none; }
+    .site-header { backdrop-filter: blur(14px); background: rgba(247,245,239,.92); }
+    .editorial-label { letter-spacing: .16em; font-size: .67rem; font-weight: 600; text-transform: uppercase; }
+    .fine-rule { border-color: var(--line); }
+    .placeholder {
+      background-color: #dedbd0;
+      background-image: linear-gradient(45deg, rgba(54,66,53,.08) 25%, transparent 25%), linear-gradient(-45deg, rgba(54,66,53,.08) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(54,66,53,.08) 75%), linear-gradient(-45deg, transparent 75%, rgba(54,66,53,.08) 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+    }
+    .placeholder-text { letter-spacing: .13em; font-size: .63rem; font-weight: 600; text-transform: uppercase; text-align: center; line-height: 1.6; }
+    .image-filled { position: relative; overflow: hidden; padding: 0 !important; isolation: isolate; background: var(--stone); }
+    .image-filled > img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .7s ease; }
+    .image-filled:hover > img { transform: scale(1.035); }
+    .nav-link { position: relative; }
+    .nav-link::after { content:""; position:absolute; height:1px; left:0; bottom:-5px; width:0; background:currentColor; transition:width .3s ease; }
+    .nav-link:hover::after, .nav-link:focus-visible::after { width:100%; }
+    .button-editorial { transition: transform .25s ease, background-color .25s ease, color .25s ease; }
+    .button-editorial:hover { transform: translateY(-2px); }
+    .portfolio-card { transition: transform .35s ease, border-color .35s ease; }
+    .portfolio-card:hover { transform: translateY(-5px); border-color: var(--olive); }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .service-card { transition: transform .3s ease, background-color .3s ease; }
+    .service-card:hover { transform: translateY(-4px); }
+    :focus-visible { outline: 2px solid var(--olive); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(247, 245, 239);">
+  <div class="site-shell">
+   <header class="site-header sticky top-0 z-50 w-full border-b fine-rule">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 lg:px-10" aria-label="Navegação principal">
+     <a href="#inicio" data-template-id="header-brand" class="canva-link serif text-base italic tracking-wide" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 16px;">MINIMALIST</a>
+     <div class="hidden items-center gap-7 md:flex">
+      <a href="#inicio" data-template-id="nav-home" class="canva-link nav-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Início</a> <a href="#sobre" data-template-id="nav-about" class="canva-link nav-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Sobre</a> <a href="#servicos" data-template-id="nav-services" class="canva-link nav-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Serviços</a> <a href="#portfolio" data-template-id="nav-portfolio" class="canva-link nav-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Portfólio</a> <a href="#contato" data-template-id="nav-contact" class="canva-link nav-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Contato</a>
+     </div><button id="menu-toggle" type="button" class="rounded-sm p-1 text-[#1d1d1a] md:hidden" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"> <i data-lucide="menu" width="23" height="23"></i> </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t fine-rule px-5 py-5 md:hidden">
+     <div class="flex flex-col gap-5">
+      <a href="#inicio" data-template-id="mobile-home" class="canva-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Início</a> <a href="#sobre" data-template-id="mobile-about" class="canva-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Sobre</a> <a href="#servicos" data-template-id="mobile-services" class="canva-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Serviços</a> <a href="#portfolio" data-template-id="mobile-portfolio" class="canva-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Portfólio</a> <a href="#contato" data-template-id="mobile-contact" class="canva-link editorial-label" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Contato</a>
+     </div>
+    </div>
+   </header>
+   <main>
+    <section id="inicio" class="mx-auto max-w-7xl px-5 pb-20 pt-10 lg:px-10 lg:pb-28 lg:pt-16">
+     <div class="grid items-stretch gap-7 lg:grid-cols-[.9fr_1.1fr] lg:gap-14">
+      <div data-template-id="hero-photo-placeholder" class="canva-banner placeholder reveal flex min-h-[480px] items-center justify-center border fine-rule p-8 sm:min-h-[600px]">
+       <span data-template-id="hero-photo-text" class="canva-text placeholder-text max-w-[180px]" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+      </div>
+      <div class="reveal flex flex-col justify-between py-3 lg:py-8">
+       <div>
+        <p data-template-id="hero-number" class="canva-text editorial-label mb-10" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">01 — Marketing &amp; Conteúdo</p>
+        <h1 data-template-id="hero-title" class="canva-text serif max-w-2xl text-5xl leading-[1.08] italic sm:text-6xl lg:text-7xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 32px;">MINIMALIST</h1>
+        <p data-template-id="hero-quote" class="canva-text mt-9 max-w-xl text-xl font-light leading-relaxed sm:text-2xl" style="color: rgb(29, 29, 26); font-weight: 300; font-style: normal; font-size: 24px;">A MINIMALIST ACREDITA QUE MENOS É
+MAIS — QUANDO HÁ ESTRATÉGIA.
+Nosso objetivo é simplificar a comunicação das marcas, criando conteúdos que conectam, posicionam e geralmente resultados reais.</p>
+       </div>
+       <div class="mt-14">
+        <p data-template-id="hero-services" class="canva-text border-t fine-rule pt-5 text-sm tracking-wide sm:text-base" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Vídeo • Conteúdo • Marketing • Gestão • Fotografia</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+         <a href="#sobre" data-template-id="hero-about-button" class="canva-button button-editorial inline-flex border border-[#364235] px-5 py-4 editorial-label" style="background: rgb(247, 245, 239); color: rgb(54, 66, 53); font-weight: 600; font-style: normal; font-size: 16px;">CONHEÇA A MINIMALIST</a> <a href="#contato" data-template-id="hero-contact-button" class="canva-button button-editorial inline-flex border border-[#364235] bg-[#364235] px-5 py-4 editorial-label" style="background: rgb(54, 66, 53); color: rgb(255, 253, 248); font-weight: 600; font-style: normal; font-size: 16px;">FALE COMIGO</a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="sobre" class="border-y fine-rule bg-[#fffdf8]">
+     <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.08fr_.92fr] lg:px-10 lg:py-28">
+      <div class="reveal">
+       <p data-template-id="about-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">02 — Sobre</p>
+       <h2 data-template-id="about-title" class="canva-text serif mt-6 max-w-2xl text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 24px;">Quem está por trás da Minimalist?</h2>
+       <div class="mt-10 max-w-2xl space-y-5 text-base font-light leading-8 sm:text-lg">
+        <p data-template-id="about-copy-1" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Prazer, Kimberly.</p>
+        <p data-template-id="about-copy-2" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Sou criadora de conteúdo, fotógrafa de formação e estudante de Publicidade e Propaganda.</p>
+        <p data-template-id="about-copy-3" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Minha experiência com marketing digital me levou a transformar criatividade em estratégia e imagens em ferramentas de posicionamento.</p>
+        <p data-template-id="about-copy-4" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Hoje, através da Minimalist, ajudo marcas e empresas a comunicarem melhor aquilo que fazem, construindo uma presença digital mais profissional, autêntica e estratégica.</p>
+       </div>
+       <blockquote data-template-id="about-quote" class="canva-text serif mt-12 border-l-2 border-[#364235] pl-6 text-2xl leading-relaxed italic sm:text-3xl" style="color: rgb(54, 66, 53); font-weight: 400; font-style: italic; font-size: 16px;">Por trás de cada marca existe uma história. Meu trabalho é ajudar essa história a ser vista.</blockquote>
+      </div>
+      <div data-template-id="about-photo-placeholder" class="canva-banner placeholder reveal flex min-h-[440px] items-center justify-center border fine-rule p-8">
+       <span data-template-id="about-photo-text" class="canva-text placeholder-text max-w-[190px]" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+      </div>
+     </div>
+    </section>
+    <section id="historia" class="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-28">
+     <div class="grid gap-12 lg:grid-cols-[.9fr_1.1fr]">
+      <div class="reveal">
+       <p data-template-id="story-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">03 — Minha história</p>
+       <h2 data-template-id="story-title" class="canva-text serif mt-6 text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 24px;">Antes da profissional, existe uma história.</h2>
+       <div class="mt-10 max-w-xl space-y-5 font-light leading-8 sm:text-lg">
+        <p data-template-id="story-copy-1" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">A Minimalist também carrega um pouco da minha história.</p>
+        <p data-template-id="story-copy-2" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Sou mulher, esposa, mãe e cristã. Minha trajetória pessoal também faz parte da profissional que me tornei.</p>
+        <p data-template-id="story-copy-3" class="canva-text" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Construir minha carreira enquanto construo minha família me ensinou sobre responsabilidade, propósito, coragem e sobre transformar sonhos em realidade.</p>
+       </div>
+      </div>
+      <div class="reveal grid grid-cols-2 gap-4 self-start">
+       <div data-template-id="story-photo-personal" class="canva-banner placeholder flex min-h-[360px] items-center justify-center border fine-rule p-5">
+        <span data-template-id="story-photo-personal-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <div data-template-id="story-photo-journey" class="canva-banner placeholder mt-14 flex min-h-[360px] items-center justify-center border fine-rule p-5">
+        <span data-template-id="story-photo-journey-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="servicos" class="bg-[#e7e3d8]">
+     <div class="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-28">
+      <div class="reveal mb-12 flex flex-col justify-between gap-7 sm:flex-row sm:items-end">
+       <div>
+        <p data-template-id="services-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">04 — Serviços</p>
+        <h2 data-template-id="services-title" class="canva-text serif mt-6 max-w-2xl text-center text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 24px;">Vamos
+Transformar sua
+Marca em uma
+Presença que gera
+Resultado?</h2>
+       </div>
+       <p data-template-id="services-note" class="canva-text max-w-xs text-sm leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Soluções autorais para comunicar, posicionar e criar presença.</p>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-2">
+       <article data-template-id="service-video-card" class="canva-card service-card reveal bg-[#364235] p-6 text-[#fffdf8] sm:p-9" style="background: rgb(54, 66, 53);">
+        <div class="flex items-start justify-between">
+         <span data-template-id="service-video-number" class="canva-text editorial-label" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">01</span> <span data-template-id="service-video-label" class="canva-tag editorial-label" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+        </div>
+        <h3 data-template-id="service-video-title" class="canva-text serif mt-8 text-4xl italic" style="color: rgb(255, 253, 248); font-weight: 400; font-style: italic; font-size: 19px;">PRODUÇÃO E EDIÇÃO DE VÍDEOS</h3>
+        <p data-template-id="service-video-copy" class="canva-text mt-4 max-w-md font-light leading-7" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">Conteúdo em movimento para marcas que querem chamar atenção.</p>
+       </article>
+       <article data-template-id="service-content-card" class="canva-card service-card reveal border border-[#1d1d1a] p-6 sm:p-9" style="background: rgb(231, 227, 216);">
+        <span data-template-id="service-content-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">02</span>
+        <h3 data-template-id="service-content-title" class="canva-text serif mt-7 text-2xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">CONTEÚDO &amp; MARKETING</h3>
+        <p data-template-id="service-content-copy" class="canva-text mt-4 font-light leading-7" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Criatividade com estratégia.</p>
+       </article>
+       <article data-template-id="service-social-card" class="canva-card service-card reveal border border-[#1d1d1a] p-6 sm:p-9" style="background: rgb(231, 227, 216);">
+        <span data-template-id="service-social-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">03</span>
+        <h3 data-template-id="service-social-title" class="canva-text serif mt-7 text-2xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">GERENCIAMENTO DE REDES SOCIAIS</h3>
+        <p data-template-id="service-social-copy" class="canva-text mt-4 font-light leading-7" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Sua marca presente, profissional e estratégica.</p>
+       </article>
+       <article data-template-id="service-photo-card" class="canva-card service-card reveal border border-[#1d1d1a] p-6 sm:p-9 lg:col-start-2" style="background: rgb(231, 227, 216);">
+        <span data-template-id="service-photo-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">04</span>
+        <h3 data-template-id="service-photo-title" class="canva-text serif mt-7 text-2xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">FOTOGRAFIA &amp; ENSAIOS</h3>
+        <p data-template-id="service-photo-copy" class="canva-text mt-4 font-light leading-7" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Imagens que traduzem quem você é.</p>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section id="portfolio" class="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-28">
+     <div class="reveal mb-12">
+      <p data-template-id="portfolio-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">05 — Portfólio</p>
+      <h2 data-template-id="portfolio-title" class="canva-text serif mt-6 max-w-3xl text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 24px;">Alguns projetos que já passaram pela Minimalist</h2>
+      <p data-template-id="portfolio-campaigns-label" class="canva-text editorial-label mt-10" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">Campanhas</p>
+     </div>
+     <article data-template-id="keima-campaigns-feature" class="canva-card reveal mb-10 border-2 border-[#364235] bg-[#fffdf8] p-6 sm:p-10" style="background: rgb(255, 253, 248);">
+      <div class="grid gap-8 lg:grid-cols-[1.25fr_.75fr] lg:items-end">
+       <div>
+        <div data-template-id="keima-logo-placeholder" class="canva-banner placeholder mb-8 flex min-h-[120px] items-center justify-center border fine-rule p-5 sm:min-h-[150px]">
+         <span data-template-id="keima-logo-placeholder-text" class="canva-text placeholder-text max-w-[220px]" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+        </div>
+        <p data-template-id="keima-campaigns-category" class="canva-tag editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">CAMPANHAS KEIMA</p>
+        <h3 data-template-id="keima-campaigns-title" class="canva-text serif mt-5 text-4xl italic sm:text-6xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 36px;">Keima — Campanhas</h3>
+        <p data-template-id="keima-campaigns-copy" class="canva-text mt-5 max-w-xl text-base font-light leading-7" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Uma seleção de campanhas em que a Keima transforma datas especiais em histórias para marcas e pessoas.</p>
+       </div>
+       <div class="flex flex-col gap-4 border-t fine-rule pt-5">
+        <a href="https://www.instagram.com/reel/DKez1_7Al6t/?igsi=MXZ5bWN2bDlmNzNyMQ==" target="_blank" rel="noopener noreferrer" data-template-id="keima-valentines-button" class="canva-button button-editorial border-b border-[#1d1d1a] pb-2 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">DIA DOS NAMORADOS — VER CAMPANHA →</a> <a href="https://www.instagram.com/reel/DM22NT6gFvq/?igsi=ZTJxOGZxanR2aG41" target="_blank" rel="noopener noreferrer" data-template-id="keima-fathers-button" class="canva-button button-editorial border-b border-[#1d1d1a] pb-2 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">DIA DOS PAIS — VER CAMPANHA →</a> <a href="https://www.instagram.com/reel/DI1P1PmOADL/?igsi=MW43b3JrM2h6cHhmaQ==" target="_blank" rel="noopener noreferrer" data-template-id="keima-mothers-button" class="canva-button button-editorial border-b border-[#1d1d1a] pb-2 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">DIA DAS MÃES — VER CAMPANHA →</a>
+       </div>
+      </div>
+     </article>
+     <div class="grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-1-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-1-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-1-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">VÍDEO</p>
+       <h3 data-template-id="project-1-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Ego Studio</h3>
+       <p data-template-id="project-1-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Produção audiovisual e criação de conteúdo.</p><a href="https://drive.google.com/drive/folders/1sJe5kWDZy5r8W8tgZkuqMgIShHFkU0Ko" target="_blank" rel="noopener noreferrer" data-template-id="project-1-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER PROJETO →</a>
+      </article>
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-2-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-2-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-2-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">FOTOGRAFIA</p>
+       <h3 data-template-id="project-2-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Eventos Fechados</h3>
+       <p data-template-id="project-2-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Registro fotográfico de eventos.</p><a href="https://drive.google.com/drive/folders/10gIlsoQRIM1I7KpOS9PLoXM0sScrXI9U" target="_blank" rel="noopener noreferrer" data-template-id="project-2-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER FOTOS →</a>
+      </article>
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-3-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-3-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-3-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">FOTOGRAFIA</p>
+       <h3 data-template-id="project-3-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Ensaio Psicóloga</h3>
+       <p data-template-id="project-3-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Fotografia profissional e posicionamento de imagem.</p><a href="https://www.instagram.com/p/DaOAZmHlHUu/?stkn=MW82OXdxYjY4MTdkbQ==" target="_blank" rel="noopener noreferrer" data-template-id="project-3-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER ENSAIO →</a>
+      </article>
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-5-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-5-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-5-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">FOTOGRAFIA</p>
+       <h3 data-template-id="project-5-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Ensaio Feminino</h3>
+       <p data-template-id="project-5-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Fotografia feminina e direção de ensaio.</p><a href="https://drive.google.com/drive/folders/1KQ0JCHPJwRNf0ZXDHNLVkJWHyvJsZZMB" target="_blank" rel="noopener noreferrer" data-template-id="project-5-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER ENSAIO →</a>
+      </article>
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-4-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-4-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-4-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">FOTOGRAFIA</p>
+       <h3 data-template-id="project-4-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Ensaio Feminino 2</h3>
+       <p data-template-id="project-4-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Fotografia feminina e direção de ensaio.</p><a href="https://drive.google.com/drive/folders/1pc6qCrY_T7v6Q6cnfEZieI5dplsQ5B7p" target="_blank" rel="noopener noreferrer" data-template-id="project-4-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER ENSAIO →</a>
+      </article>
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-acai-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-acai-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-acai-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">CONTEÚDO PARA MARCAS</p>
+       <h3 data-template-id="project-acai-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Açaí Treme Terra</h3>
+       <p data-template-id="project-acai-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Produção de conteúdo e fotografia para marca.</p><a href="https://www.instagram.com/reel/DUq6TTGkuBl/?stkn=b2hxc2d3YzQ5Z2li" target="_blank" rel="noopener noreferrer" data-template-id="project-acai-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER PROJETO →</a>
+      </article>
+      <article class="portfolio-card reveal border-b fine-rule pb-6">
+       <div data-template-id="project-8-image" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-5"><span data-template-id="project-8-image-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <p data-template-id="project-8-category" class="canva-tag editorial-label mt-5" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">VÍDEO</p>
+       <h3 data-template-id="project-8-title" class="canva-text serif mt-3 text-xl italic" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 19px;">Padaria Tempo</h3>
+       <p data-template-id="project-8-copy" class="canva-text mt-3 text-sm font-light leading-6" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Vídeo e criação de conteúdo para marca.</p><a href="https://www.instagram.com/reel/Dc0wyAzxysJ/?stkn=MWoybzl5Y3J4eDU5Mw==" target="_blank" rel="noopener noreferrer" data-template-id="project-8-button" class="canva-button button-editorial mt-6 inline-flex border-b border-[#1d1d1a] pb-1 editorial-label" style="color: rgb(29, 29, 26); font-weight: 600; font-style: normal; font-size: 16px;">VER VÍDEO →</a>
+      </article>
+     </div>
+    </section>
+    <section id="ensaio" class="bg-[#364235] text-[#fffdf8]">
+     <div class="mx-auto grid max-w-7xl gap-9 px-5 py-20 lg:grid-cols-[.85fr_1.15fr] lg:px-10 lg:py-28">
+      <div class="reveal flex flex-col justify-between">
+       <div>
+        <p data-template-id="shoot-number" class="canva-text editorial-label" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">06 — Ensaio</p>
+        <h2 data-template-id="shoot-title" class="canva-text serif mt-6 text-4xl leading-tight italic sm:text-5xl" style="color: rgb(255, 253, 248); font-weight: 400; font-style: italic; font-size: 24px;">Conteúdo para marcas que têm algo a dizer.
+
+Menos preocupação com conteúdo.
+Mais resultado com estratégia.
+
+A Minimalist une criatividade, fotografia e estratégia para construir uma comunicação que combina com cada negócio.
+
+Sem excesso.
+Sem fórmulas prontas.
+
+Só boas ideias, bem executadas.
+
+A Minimalist resolve.</h2>
+       </div><a href="https://wa.me/554298390487" target="_blank" rel="noopener noreferrer" data-template-id="shoot-button" class="canva-button button-editorial mt-10 inline-flex w-fit border border-[#fffdf8] px-5 py-4 editorial-label" style="background: rgb(54, 66, 53); color: rgb(255, 253, 248); font-weight: 600; font-style: normal; font-size: 16px;">PEDIR ORÇAMENTO →</a>
+      </div>
+      <div class="reveal grid grid-cols-2 gap-4">
+       <div data-template-id="shoot-photo-1" class="canva-banner placeholder flex min-h-[350px] items-center justify-center border border-[#fffdf850] p-5"><span data-template-id="shoot-photo-1-text" class="canva-text placeholder-text" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+       <div data-template-id="shoot-photo-2" class="canva-banner placeholder mt-14 flex min-h-[350px] items-center justify-center border border-[#fffdf850] p-5"><span data-template-id="shoot-photo-2-text" class="canva-text placeholder-text" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;"></span>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="clientes" class="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-28">
+     <div class="reveal max-w-3xl">
+      <p data-template-id="clients-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">07 — Clientes</p>
+      <h2 data-template-id="clients-title" class="canva-text serif mt-6 text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 24px;">Marcas que já confiaram na Minimalist</h2>
+      <p data-template-id="clients-note" class="canva-text mt-6 max-w-xl font-light leading-7" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">Trabalho individual, autoral e conduzido por Kimberly.</p>
+     </div>
+     <div class="reveal mt-12 grid grid-cols-2 border-l border-t fine-rule sm:grid-cols-3 lg:grid-cols-6">
+      <div data-template-id="client-logo-1" class="canva-banner flex aspect-[1.5/1] items-center justify-center border-b border-r fine-rule p-4" style="background: rgb(255, 253, 248);"><span data-template-id="client-logo-1-text" class="canva-text placeholder-text" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA LOGO DO CLIENTE</span>
+      </div>
+      <div data-template-id="client-logo-2" class="canva-banner flex aspect-[1.5/1] items-center justify-center border-b border-r fine-rule p-4" style="background: rgb(255, 253, 248);"><span data-template-id="client-logo-2-text" class="canva-text placeholder-text" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA LOGO DO CLIENTE</span>
+      </div>
+      <div data-template-id="client-logo-3" class="canva-banner flex aspect-[1.5/1] items-center justify-center border-b border-r fine-rule p-4" style="background: rgb(255, 253, 248);"><span data-template-id="client-logo-3-text" class="canva-text placeholder-text" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA LOGO DO CLIENTE</span>
+      </div>
+      <div data-template-id="client-logo-4" class="canva-banner flex aspect-[1.5/1] items-center justify-center border-b border-r fine-rule p-4" style="background: rgb(255, 253, 248);"><span data-template-id="client-logo-4-text" class="canva-text placeholder-text" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA LOGO DO CLIENTE</span>
+      </div>
+      <div data-template-id="client-logo-5" class="canva-banner flex aspect-[1.5/1] items-center justify-center border-b border-r fine-rule p-4" style="background: rgb(255, 253, 248);"><span data-template-id="client-logo-5-text" class="canva-text placeholder-text" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA LOGO DO CLIENTE</span>
+      </div>
+      <div data-template-id="client-logo-6" class="canva-banner flex aspect-[1.5/1] items-center justify-center border-b border-r fine-rule p-4" style="background: rgb(255, 253, 248);"><span data-template-id="client-logo-6-text" class="canva-text placeholder-text" style="color: rgb(77, 77, 71); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA LOGO DO CLIENTE</span>
+      </div>
+     </div>
+    </section>
+    <section id="publi" class="border-y fine-rule bg-[#fffdf8]">
+     <div class="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-28">
+      <div class="reveal flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
+       <div>
+        <p data-template-id="publi-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">08 — Publi</p>
+        <h2 data-template-id="publi-title" class="canva-text serif mt-6 max-w-2xl text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 24px;">Conteúdo que sai da tela e chega às pessoas.</h2>
+       </div><a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4Mjc3MDU0MTAyMjE0Nzg4?igsi=aHBudTk1cWRhamN4" target="_blank" rel="noopener noreferrer" data-template-id="publi-button" class="canva-button button-editorial inline-flex w-fit border border-[#364235] px-5 py-4 editorial-label" style="background: rgb(255, 253, 248); color: rgb(54, 66, 53); font-weight: 600; font-style: normal; font-size: 16px;">VER PUBLI NO INSTAGRAM →</a>
+      </div>
+      <div class="reveal mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+       <div data-template-id="publi-image-1" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-4" style="background: rgb(222, 219, 208);"><span data-template-id="publi-image-1-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA IMAGEM DE PUBLI</span>
+       </div>
+       <div data-template-id="publi-image-2" class="canva-banner placeholder mt-10 flex aspect-[4/5] items-center justify-center border fine-rule p-4" style="background: rgb(222, 219, 208);"><span data-template-id="publi-image-2-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA IMAGEM DE PUBLI</span>
+       </div>
+       <div data-template-id="publi-image-3" class="canva-banner placeholder flex aspect-[4/5] items-center justify-center border fine-rule p-4" style="background: rgb(222, 219, 208);"><span data-template-id="publi-image-3-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA IMAGEM DE PUBLI</span>
+       </div>
+       <div data-template-id="publi-image-4" class="canva-banner placeholder mt-10 flex aspect-[4/5] items-center justify-center border fine-rule p-4" style="background: rgb(222, 219, 208);"><span data-template-id="publi-image-4-text" class="canva-text placeholder-text" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">INSIRA IMAGEM DE PUBLI</span>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section id="diferencial" class="mx-auto max-w-7xl px-5 py-20 lg:px-10 lg:py-28">
+     <div class="reveal text-center">
+      <p data-template-id="difference-number" class="canva-text editorial-label" style="color: rgb(54, 66, 53); font-weight: 400; font-style: normal; font-size: 16px;">09 — Diferencial</p>
+      <h2 data-template-id="difference-title" class="canva-text serif mx-auto mt-6 max-w-3xl text-4xl leading-tight italic sm:text-5xl" style="color: rgb(29, 29, 26); font-weight: 400; font-style: italic; font-size: 24px;">Não é só sobre aparecer.</h2>
+      <p data-template-id="difference-copy-1" class="canva-text mx-auto mt-8 max-w-2xl text-lg font-light leading-8" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">É sobre saber como, onde e por que sua marca deve aparecer.</p>
+      <p data-template-id="difference-copy-2" class="canva-text mx-auto mt-4 max-w-2xl text-lg font-light leading-8" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Na Minimalist, criatividade e estratégia caminham juntas para transformar presença digital em posicionamento.</p>
+     </div>
+     <div class="reveal mt-16 grid gap-4 md:grid-cols-3">
+      <article data-template-id="difference-creativity" class="canva-card border-t-2 border-[#364235] bg-[#e7e3d8] p-7" style="background: rgb(231, 227, 216);">
+       <h3 data-template-id="difference-creativity-title" class="canva-text serif text-2xl italic" style="color: rgb(54, 66, 53); font-weight: 400; font-style: italic; font-size: 19px;">CRIATIVIDADE</h3>
+       <p data-template-id="difference-creativity-copy" class="canva-text mt-4 font-light leading-7" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Conteúdo que chama atenção.</p>
+      </article>
+      <article data-template-id="difference-strategy" class="canva-card border-t-2 border-[#364235] bg-[#e7e3d8] p-7" style="background: rgb(231, 227, 216);">
+       <h3 data-template-id="difference-strategy-title" class="canva-text serif text-2xl italic" style="color: rgb(54, 66, 53); font-weight: 400; font-style: italic; font-size: 19px;">ESTRATÉGIA</h3>
+       <p data-template-id="difference-strategy-copy" class="canva-text mt-4 font-light leading-7" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Comunicação pensada para cada marca.</p>
+      </article>
+      <article data-template-id="difference-authenticity" class="canva-card border-t-2 border-[#364235] bg-[#e7e3d8] p-7" style="background: rgb(231, 227, 216);">
+       <h3 data-template-id="difference-authenticity-title" class="canva-text serif text-2xl italic" style="color: rgb(54, 66, 53); font-weight: 400; font-style: italic; font-size: 19px;">AUTENTICIDADE</h3>
+       <p data-template-id="difference-authenticity-copy" class="canva-text mt-4 font-light leading-7" style="color: rgb(29, 29, 26); font-weight: 400; font-style: normal; font-size: 16px;">Conteúdo que parece com você.</p>
+      </article>
+     </div>
+    </section>
+    <section id="contato" data-template-id="contact-section" class="canva-section bg-[#364235] text-[#fffdf8]" style="background: rgb(54, 66, 53);">
+     <div class="mx-auto max-w-7xl px-5 py-24 text-center lg:px-10 lg:py-32">
+      <p data-template-id="contact-number" class="canva-text editorial-label" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">10 — Contato</p>
+      <h2 data-template-id="contact-title" class="canva-text serif mx-auto mt-6 max-w-4xl text-5xl leading-tight italic sm:text-6xl" style="color: rgb(255, 253, 248); font-weight: 400; font-style: italic; font-size: 24px;">Sua marca tem muito mais para mostrar.</h2>
+      <p data-template-id="contact-copy" class="canva-text mx-auto mt-8 max-w-xl text-lg font-light leading-8" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">Vamos transformar suas ideias em conteúdo, imagem e estratégia?</p><!-- Substitua #whatsapp-link-pendente pela ligação de WhatsApp quando estiver disponível. --> <a href="#contato" data-template-id="contact-button" class="canva-button button-editorial mt-11 inline-flex border border-[#fffdf8] px-6 py-5 editorial-label" style="background: rgb(54, 66, 53); color: rgb(255, 253, 248); font-weight: 600; font-style: normal; font-size: 16px;">VAMOS CONVERSAR →</a>
+      <p data-template-id="contact-note" class="canva-text mt-5 text-xs font-light opacity-75" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">Link de WhatsApp disponível para configuração futura.</p>
+     </div>
+    </section>
+   </main>
+   <footer class="bg-[#1d1d1a] text-[#fffdf8]">
+    <div class="mx-auto max-w-7xl px-5 py-14 lg:px-10">
+     <div class="grid gap-10 md:grid-cols-2">
+      <div>
+       <p data-template-id="footer-brand" class="canva-text serif text-3xl italic" style="color: rgb(255, 253, 248); font-weight: 400; font-style: italic; font-size: 16px;">MINIMALIST</p>
+       <p data-template-id="footer-subtitle" class="canva-text mt-3 text-sm tracking-wide" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">Marketing &amp; Conteúdo</p>
+       <p data-template-id="footer-services" class="canva-text mt-7 text-sm font-light leading-6" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">Vídeo • Conteúdo • Marketing • Gestão • Fotografia</p>
+      </div>
+      <div class="md:text-right">
+       <div class="flex flex-col items-start gap-4 md:items-end">
+        <!-- Substitua #instagram-minimalist-pendente pela ligação oficial do Instagram da marca. --> <a href="#instagram-minimalist-pendente" data-template-id="footer-minimalist-button" class="canva-button button-editorial border-b border-[#fffdf8] pb-1 editorial-label" style="color: rgb(255, 253, 248); font-weight: 600; font-style: normal; font-size: 16px;">SEGUIR NO MINIMALIST</a> <a href="https://www.instagram.com/kimdomarketingg?igsi=ZHF6YWZmcXFlZTAw&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" data-template-id="footer-kimberly-button" class="canva-button button-editorial border-b border-[#fffdf8] pb-1 editorial-label" style="color: rgb(255, 253, 248); font-weight: 600; font-style: normal; font-size: 16px;">SEGUIR A KIMBERLY</a>
+       </div>
+       <p data-template-id="footer-note" class="canva-text mt-8 text-xs font-light opacity-65" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">O link do Instagram da Minimalist pode ser substituído futuramente.</p>
+      </div>
+     </div>
+     <div class="mt-12 border-t border-[#fffdf830] pt-6">
+      <p data-template-id="footer-copyright" class="canva-text text-xs font-light" style="color: rgb(255, 253, 248); font-weight: 400; font-style: normal; font-size: 16px;">© Minimalist | Kimberly</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+
+      // Imagens ilustrativas para que o site não fique com espaços vazios no GitHub Pages.
+      // Você pode trocar qualquer URL por uma foto própria depois.
+      const siteImages = {
+        "hero-photo-placeholder": ["https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85", "Espaço de trabalho criativo"],
+        "about-photo-placeholder": ["https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=85", "Equipe trabalhando em projeto criativo"],
+        "story-photo-personal": ["https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=85", "Retrato editorial"],
+        "story-photo-journey": ["https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1000&q=85", "Notebook em mesa de trabalho"],
+        "keima-logo-placeholder": ["https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=85", "Identidade visual e design"],
+        "project-1-image": ["https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85", "Fotografia de moda"],
+        "project-2-image": ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85", "Fotografia de produto"],
+        "project-3-image": ["https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85", "Planejamento de conteúdo"],
+        "project-5-image": ["https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=900&q=85", "Criação gráfica"],
+        "project-4-image": ["https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=85", "Reunião criativa"],
+        "project-acai-image": ["https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=85", "Conteúdo gastronômico"],
+        "project-8-image": ["https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85", "Fotografia de padaria"],
+        "shoot-photo-1": ["https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85", "Ensaio editorial de produto"],
+        "shoot-photo-2": ["https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1000&q=85", "Produção fotográfica de moda"],
+        "publi-image-1": ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85", "Fotografia publicitária de produto"],
+        "publi-image-2": ["https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=800&q=85", "Fotografia de cosméticos"],
+        "publi-image-3": ["https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85", "Fotografia de acessórios"],
+        "publi-image-4": ["https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=85", "Imagem para campanha de marca"]
+      };
+
+      Object.entries(siteImages).forEach(([id, details]) => {
+        const frame = document.querySelector(`[data-template-id="${id}"]`);
+        if (!frame) return;
+        frame.classList.add("image-filled");
+        const image = document.createElement("img");
+        image.src = details[0];
+        image.alt = details[1];
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.referrerPolicy = "no-referrer";
+        frame.replaceChildren(image);
+      });
+
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!expanded));
+        mobileMenu.classList.toggle("hidden", expanded);
+      });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Remove sections and structural numbering requested for this page.
+      document.querySelectorAll("#clientes, #publi, #inicio [data-template-id$='-number'], #sobre [data-template-id$='-number'], #historia [data-template-id$='-number'], #servicos [data-template-id$='-number'], #portfolio [data-template-id$='-number'], #ensaio [data-template-id$='-number'], #diferencial [data-template-id$='-number'], #contato [data-template-id$='-number']").forEach((element) => element.remove());
+
+      document.querySelectorAll('a[href="#whatsapp-link-pendente"], a[href="#instagram-minimalist-pendente"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          document.getElementById("contato").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    });
+  </script>
+ 
+</body></html>
